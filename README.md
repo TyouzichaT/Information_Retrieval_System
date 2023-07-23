@@ -28,6 +28,7 @@ in this file are the same as the ones in **passage-collection.txt**. However, th
 ### Task 1  Text statistics
 
 **Preprocessing**
+
 For each passage in **passage-collection.txt**, the following preprocessing steps are finished : 
 
     1.Lowercase. 
@@ -38,12 +39,11 @@ For each passage in **passage-collection.txt**, the following preprocessing step
     Note that "r’\w+’" will only consider words including [a-zA-Z0-9_], which means all punctuation is removed. If stop words are not removed, the size of dictionary, i.e. vocabulary, is 102613.
 
 **Study of Zipf’s law**
+
 Compare empirical distribution with the actual Zipf’s law distribution.
 The equation of Zipf’s law is:
-$$
-f(k;s,N) = \frac{{k}^{-1}}{\sum_{i=1}^N{{i}^{-1}}}
-\label{eq:1}
-$$
+
+$$ f(k;s,N) = \frac{{k}^{-1}}{\sum_{i=1}^N{{i}^{-1}}}\label{eq:1}$$
 
 ### Task 2  Inverted index
 Use **candidate-passages-top1000.tsv** for this task(unique instances of column pairs pid and passage). Using the vocabulary of terms identified in Task 1 to build an inverted index for the collection so that we can retrieve passages in an efficient way. The inverted index is to allow fast full-text searches, at a cost of increased processing when a document is added to the database. However, there is large storage overhead and high maintenance costs on updating, deleting, and inserting.
@@ -52,16 +52,17 @@ Use **candidate-passages-top1000.tsv** for this task(unique instances of column 
 
 
 ### Task 3  Retrieval Models
-<img src="png/retrieval_model.png" width="50%" height="50%" />
+<img src="png/retrieval_model.png" width="40%" height="40%" />
 
 - Vector Space Model: TF-IDF model
     Document as vector: term t weight = term frequency of t in this document * inverse document frequency 
     Query as vector: term t weight = term frequency of t in this query * inverse document frequency 
     cosine score = inner product of D and Q/ normalized D * normalized Q
-
     <img src="png/cosine_similarity.png" width="50%" height="50%" />
 
+
 - Probabilistic Model: BM25
+
     <img src="png/bm25.png" width="50%" height="50%" />
 
     **ri** - Number of judged relevant docs containing term i
