@@ -10,11 +10,12 @@ Part 1 contains four specific tasks, Text statistics, Inverted index, Retrieval 
 - **test-queries.tsv** is a tab separated file, where each row contains a test query identifier
 (qid) and the actual query text.
 
-![](png/test-queries_sample.png) 
+<img src="png/test-queries_sample.png" width="50%" height="50%" />
 
 - **passage-collection.txt** is a collection of passages, one per row.
 
-![](png/passage-collection_sample.png) 
+<img src="png/passage-collection_sample.png" width="50%" height="50%" />
+
 
 - **candidate-passages-top1000.tsv** is a tab separated file with an initial selection of at
 most 1000 passages for each of the queries in test-queries.tsv. The format of this file is
@@ -22,7 +23,7 @@ most 1000 passages for each of the queries in test-queries.tsv. The format of th
 the query text, and **passage** is the passage text (all tab separated). The passages contained
 in this file are the same as the ones in **passage-collection.txt**. However, there might be some repetitions, i.e. the same passage could have been returned for more than 1 query.
 
-![](png/candidate-passages-top1000_sample.png) 
+<img src="png/candidate-passages-top1000_sample.png" width="50%" height="50%" />
 
 ### Task 1  Text statistics
 
@@ -40,30 +41,28 @@ For each passage in **passage-collection.txt**, the following preprocessing step
 Compare empirical distribution with the actual Zipf’s law distribution.
 The equation of Zipf’s law is:
 $$
-\begin{equation}
 f(k;s,N) = \frac{{k}^{-1}}{\sum_{i=1}^N{{i}^{-1}}}
 \label{eq:1}
-\end{equation}
 $$
 
 ### Task 2  Inverted index
 Use **candidate-passages-top1000.tsv** for this task(unique instances of column pairs pid and passage). Using the vocabulary of terms identified in Task 1 to build an inverted index for the collection so that we can retrieve passages in an efficient way. The inverted index is to allow fast full-text searches, at a cost of increased processing when a document is added to the database. However, there is large storage overhead and high maintenance costs on updating, deleting, and inserting.
 
-![](png/inverted_index.png) 
+<img src="png/inverted_index.png" width="50%" height="50%" />
 
 
 ### Task 3  Retrieval Models
-![](png/retrieval_model.png)
+<img src="png/retrieval_model.png" width="50%" height="50%" />
 
 - Vector Space Model: TF-IDF model
     Document as vector: term t weight = term frequency of t in this document * inverse document frequency 
     Query as vector: term t weight = term frequency of t in this query * inverse document frequency 
     cosine score = inner product of D and Q/ normalized D * normalized Q
 
-    ![](png/cosine_similarity.png)
+    <img src="png/cosine_similarity.png" width="50%" height="50%" />
 
 - Probabilistic Model: BM25
-    ![](png/bm25.png)
+    <img src="png/bm25.png" width="50%" height="50%" />
 
     **ri** - Number of judged relevant docs containing term i
     **R**  - Relevant set size (i.e., number of documents judged relevant)
@@ -74,9 +73,8 @@ Use **candidate-passages-top1000.tsv** for this task(unique instances of column 
 Use **test-queries.tsv** and **candidate-passages-top1000.tsv** for this task. Implement the query likelihood language model with (a) Laplace smoothing, (b) Lidstone correction with ϵ = 0.1, and (c) Dirichlet
 smoothing with µ = 50, and retrieve 100 passages from within the 1000 candidate passages for
 each test query. 
-
-![](png/lm_ir.png)
-![](png/Query_likelihood.png)
+<img src="png/lm_ir.png" width="50%" height="50%" />
+<img src="png/Query_likelihood.png" width="50%" height="50%" />
 
 
 ## Part 2
@@ -87,12 +85,13 @@ Part 2 contains four specific tasks, Evaluating Retrieval Quality, Logistic Regr
 - **train_data.tsv** **validation_data.tsv** 
 These are the datasets you will be using for training and validation. You are expected to train your model on the training set and evaluate your models’ performance on the validation set. In these datasets, you are given additional relevance column indicating the relevance of the passage to the query, which you will need during training and validation.
 
-![](png/validation_data.png)
+<img src="png/validation_data.png" width="50%" height="50%" />
 
 ### Task 1  Evaluating Retrieval Quality
 Implement methods to compute the **average precision** and **NDCG** metrics. Compute the performance of using BM25 as the retrieval model on the validation data (validation_data.tsv) using these metrics.
 
-![mAP](png/mAP.png)  ![mNDCG](png/mNDCG.png)  
+<img src="png/mAP.png" width="50%" height="50%" />
+<img src="png/mNDCG.png" width="50%" height="50%" />
 
 ### Task 2  Logistic Regression (LR)
 
@@ -118,5 +117,4 @@ This part only contains one python file, task3_LM.py. I implement a LambdaMART w
 - LSTM-DSSM
     LSTM-DSSM is a variant of Deep Structured Semantic Model. The intuition behind this model is to map the query and document representations into a common semantic space. This allows the network to perform semantic matching, where the similarity between the query and document is based on their meaning rather than just their surface-level features. The LSTM layer in the architecture allows the network to capture contextual information from the query and document. The figure below shows the architecture of my LSTM-DSSM.
 
-
-![](png/LSTM-DSSM.png) 
+<img src="png/LSTM-DSSM.png" width="50%" height="50%" />
