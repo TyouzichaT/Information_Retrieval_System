@@ -71,10 +71,11 @@ Use **candidate-passages-top1000.tsv** for this task(unique instances of column 
     **N**  - Number of total documents
 
 ### Task 4  Query likelihood language models
-Use **test-queries.tsv** and **candidate-passages-top1000.tsv** for this task. Implement the query likelihood language model with (a) Laplace smoothing, (b) Lidstone correction with ϵ = 0.1, and (c) Dirichlet
-smoothing with µ = 50, and retrieve 100 passages from within the 1000 candidate passages for
+Use **test-queries.tsv** and **candidate-passages-top1000.tsv** for this task. Implement the query likelihood language model with (a) Laplace smoothing, (b) Lidstone correction with ϵ = 0.1, and (c) Dirichlet smoothing with µ = 50, and retrieve 100 passages from within the 1000 candidate passages for
 each test query. 
+
 <img src="png/lm_ir.png" width="50%" height="50%" />
+
 <img src="png/Query_likelihood.png" width="50%" height="50%" />
 
 
